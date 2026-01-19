@@ -3,6 +3,7 @@
 import React from 'react'
 import { useMediaQuery } from '@/hooks/use-media-query'
 import { ArrowUpRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const categories = [
     {
@@ -42,7 +43,13 @@ const Category = () => {
         <section className="py-24 px-6 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <div className="mb-16 text-center lg:text-left flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="mb-16 text-center lg:text-left flex flex-col lg:flex-row lg:items-end justify-between gap-8"
+                >
                     <div>
                         <span className="font-quicksand text-xs uppercase tracking-[0.4em] font-bold text-gray-400 block mb-3">
                             Collections 01
@@ -51,12 +58,16 @@ const Category = () => {
                             Shop By <span className="text-neutral-300">Category</span>
                         </h2>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px] md:auto-rows-[350px]">
-                    {categories.map((cat) => (
-                        <div
+                    {categories.map((cat, index) => (
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
                             key={cat.id}
                             className={`group relative overflow-hidden rounded-[2.5rem] bg-neutral-100 ${cat.gridClass}`}
                         >
@@ -78,12 +89,16 @@ const Category = () => {
                                             {cat.title}
                                         </h3>
                                     </div>
-                                    <button className="bg-white text-black p-4 rounded-2xl hover:bg-black hover:text-white transition-all">
+                                    <motion.button
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.9 }}
+                                        className="bg-white text-black p-4 rounded-2xl hover:bg-black hover:text-white transition-all"
+                                    >
                                         <ArrowUpRight size={20} />
-                                    </button>
+                                    </motion.button>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

@@ -3,6 +3,7 @@
 import React from 'react'
 import { Instagram, Heart, MessageCircle } from 'lucide-react'
 import { useMediaQuery } from '@/hooks/use-media-query'
+import { motion } from 'framer-motion'
 
 const feed = [
     {
@@ -38,10 +39,19 @@ const Community = () => {
         <section className="py-24 px-6 bg-[#fafafa]">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <div className="flex flex-col items-center text-center mb-16">
-                    <div className="bg-black text-white p-4 rounded-full mb-6">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="flex flex-col items-center text-center mb-16"
+                >
+                    <motion.div
+                        whileHover={{ rotate: 10, scale: 1.1 }}
+                        className="bg-black text-white p-4 rounded-full mb-6 cursor-pointer"
+                    >
                         <Instagram size={32} />
-                    </div>
+                    </motion.div>
                     <span className="font-quicksand text-xs uppercase tracking-[0.5em] font-bold text-gray-400 block mb-2">
                         Join the Movement
                     </span>
@@ -56,12 +66,19 @@ const Community = () => {
                     >
                         @aura_streetwear
                     </a>
-                </div>
+                </motion.div>
 
                 {/* Feed Grid */}
                 <div className={`grid gap-4 ${isMobile ? 'grid-cols-2' : 'grid-cols-4'}`}>
-                    {feed.map((post) => (
-                        <div key={post.id} className="group relative aspect-square overflow-hidden rounded-4xl bg-neutral-200">
+                    {feed.map((post, index) => (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                            key={post.id}
+                            className="group relative aspect-square overflow-hidden rounded-4xl bg-neutral-200"
+                        >
                             <img
                                 src={post.image}
                                 alt="Community Post"
@@ -81,16 +98,22 @@ const Community = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 
                 {/* Tagline */}
-                <div className="mt-16 text-center">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className="mt-16 text-center"
+                >
                     <p className="font-quicksand text-sm uppercase tracking-[0.3em] font-bold text-gray-400">
                         Tag us to be featured #AuraVibe
                     </p>
-                </div>
+                </motion.div>
             </div>
         </section>
     )

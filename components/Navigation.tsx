@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react'
 import { ShoppingBag, Search, User, Menu, X } from 'lucide-react'
 
+import { motion } from 'framer-motion'
+
 const Navigation = () => {
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -23,8 +25,14 @@ const Navigation = () => {
     ]
 
     return (
-        <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent py-6'
-            }`}>
+        <motion.nav
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8 }}
+            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent py-6'
+                }`}
+        >
+
             <div className='max-w-7xl mx-auto px-6 flex items-center justify-between'>
 
                 {/* Left: Mobile Menu Toggle / Search (Desktop) */}
@@ -93,7 +101,7 @@ const Navigation = () => {
                     </div>
                 </div>
             </div>
-        </nav>
+        </motion.nav>
     )
 }
 

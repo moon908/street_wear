@@ -13,14 +13,14 @@ const Footer = () => {
                         <h2 className="font-averia-gruesa-libre text-7xl md:text-9xl tracking-tighter mb-8">
                             AURA
                         </h2>
-                        <p className="font-quicksand text-lg text-white/60 max-w-sm mb-12">
+                        <p className="font-quicksand text-lg text-white/60 max-w-sm mb-12 font-bold">
                             Redefining urban culture through minimal design and premium quality. Made for the movement.
                         </p>
                         <div className="flex gap-6">
-                            <a href="#" className="hover:text-white/50 transition-colors"><Instagram size={24} /></a>
-                            <a href="#" className="hover:text-white/50 transition-colors"><Twitter size={24} /></a>
-                            <a href="#" className="hover:text-white/50 transition-colors"><Facebook size={24} /></a>
-                            <a href="#" className="hover:text-white/50 transition-colors"><Youtube size={24} /></a>
+                            <a href="#" className="text-white/50 hover:text-white transition-colors"><Instagram size={24} /></a>
+                            <a href="#" className="text-white/50 hover:text-white transition-colors"><Twitter size={24} /></a>
+                            <a href="#" className="text-white/50 hover:text-white transition-colors"><Facebook size={24} /></a>
+                            <a href="#" className="text-white/50 hover:text-white transition-colors"><Youtube size={24} /></a>
                         </div>
                     </div>
 

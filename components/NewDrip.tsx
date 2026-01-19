@@ -5,6 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { ChevronLeft, ChevronRight, Plus } from 'lucide-react'
 import { useMediaQuery } from '@/hooks/use-media-query'
+import { motion } from 'framer-motion'
 
 const products = [
     {
@@ -74,7 +75,13 @@ const NewDrip = () => {
         <section className="py-24 bg-[#0a0a0a] text-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
                 {/* Header */}
-                <div className="flex flex-col md:flex-row items-end justify-between mb-16 space-y-8 md:space-y-0">
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="flex flex-col md:flex-row items-end justify-between mb-16 space-y-8 md:space-y-0"
+                >
                     <div className="w-full md:w-auto">
                         <span className="font-quicksand text-xs uppercase tracking-[0.6em] text-white/40 block mb-4">
                             New Arrivals / Series 2026
@@ -86,26 +93,44 @@ const NewDrip = () => {
 
                     {/* Controls */}
                     <div className="flex gap-4">
-                        <button
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
                             onClick={scrollPrev}
                             className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all group"
                         >
                             <ChevronLeft size={24} />
-                        </button>
-                        <button
+                        </motion.button>
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
                             onClick={scrollNext}
                             className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all group"
                         >
                             <ChevronRight size={24} />
-                        </button>
+                        </motion.button>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Carousel */}
-                <div className="embla overflow-visible" ref={emblaRef}>
+                <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                    className="embla overflow-visible"
+                    ref={emblaRef}
+                >
                     <div className="embla__container flex">
-                        {products.map((product) => (
-                            <div key={product.id} className="embla__slide flex-[0_0_100%] md:flex-[0_0_40%] min-w-0 pl-8 lg:pl-10 group cursor-pointer first:pl-0">
+                        {products.map((product, index) => (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                key={product.id}
+                                className="embla__slide flex-[0_0_100%] md:flex-[0_0_40%] min-w-0 pl-8 lg:pl-10 group cursor-pointer first:pl-0"
+                            >
                                 <div className="relative aspect-3/4 rounded-[2.5rem] overflow-hidden bg-neutral-900 border border-white/5 shadow-2xl">
                                     {/* Product Image */}
                                     <img
@@ -146,18 +171,24 @@ const NewDrip = () => {
                                         <h4 className="font-quicksand text-lg font-bold text-white uppercase">{product.name}</h4>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
-                </div>
+                </motion.div>
             </div>
 
             {/* Visual Decorative Text */}
-            <div className="mt-20 flex whitespace-nowrap overflow-hidden opacity-[0.02] select-none pointer-events-none">
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 0.02 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="mt-20 flex whitespace-nowrap overflow-hidden opacity-[0.02] select-none pointer-events-none"
+            >
                 <p className="font-averia-gruesa-libre text-[15vw] leading-none uppercase">
                     AURA STREETWEAR AURA STREETWEAR AURA STREETWEAR
                 </p>
-            </div>
+            </motion.div>
         </section>
     )
 }

@@ -13,7 +13,7 @@ const Hero = () => {
             <div className='absolute bottom-0 left-[32%]'>
                 <img src="/firstHero.png" alt="Hero Image" width={530} className="drop-shadow-[0_45px_70px_rgba(0,0,0,0.7)]" />
             </div>
-            <div className={isMobile ? 'absolute top-[22%] left-[5%] flex gap-6 font-averia-gruesa-libre text-8xl' : 'absolute top-[25%] left-[22%] flex gap-90 font-averia-gruesa-libre text-9xl'}>
+            <div className={isMobile ? 'absolute top-[22%] left-[5%] flex gap-6 font-averia-gruesa-libre text-7xl' : 'absolute top-[25%] left-[22%] flex gap-90 font-averia-gruesa-libre text-9xl'}>
                 <h1>
                     Aura
                 </h1>
@@ -21,14 +21,14 @@ const Hero = () => {
                     Store
                 </h1>
             </div>
-            <div className={isMobile ? 'absolute top-[48%] left-[3%]' : 'absolute top-[54%] left-[8%]'}>
-                <h2 className={isMobile ? 'font-quicksand text-xl font-bold' : 'font-quicksand text-3xl font-bold'}>
-                    Clothes Whithout <br />
-                    excess. Only Style.
+            <div className={isMobile ? 'absolute top-[33%] left-[5%]' : 'absolute top-[54%] left-[8%]'}>
+                <h2 className={isMobile ? 'font-quicksand text-2xl font-bold' : 'font-quicksand text-3xl font-bold'}>
+                    Clothes Without {!isMobile && <br />}
+                    Excess. Only Style.
                 </h2>
-                <p className={isMobile ? 'font-quicksand text-md font-medium mt-5 w-58' : 'font-quicksand text-lg font-medium mt-5 w-105'}>
+                {!isMobile && (<p className='font-quicksand text-lg font-medium mt-5 w-105'>
                     Discover the latest trends in streetwear. Premium quality, unique designs, and the perfect fit for your style. High Quality fabrics and unique designs. All day comfort and trendy look and Easy to style with any outfit
-                </p>
+                </p>)}
                 <div>
                     <button className='font-quicksand border-2 rounded-2xl text-lg font-medium mt-5 w-36 h-9 flex items-center justify-center gap-2'>
                         Shop Now <FaShoppingBag className='ml-2' />

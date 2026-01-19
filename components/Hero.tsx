@@ -11,7 +11,7 @@ const Hero = () => {
     return (
         <div className='relative w-full h-screen overflow-hidden'>
             <div className='absolute bottom-0 left-[32%]'>
-                <img src="/firstHero.png" alt="Hero Image" width={530} className="drop-shadow-[0_45px_70px_rgba(0,0,0,0.7)]" />
+                <img src="/firstHero.png" alt="Hero Image" width={!isMobile ? 530 : 650} className="drop-shadow-[0_45px_70px_rgba(0,0,0,0.7)]" />
             </div>
             <div className={isMobile ? 'absolute top-[22%] left-[5%] flex gap-6 font-averia-gruesa-libre text-7xl' : 'absolute top-[25%] left-[22%] flex gap-90 font-averia-gruesa-libre text-9xl'}>
                 <h1>
